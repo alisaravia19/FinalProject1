@@ -1,1 +1,2 @@
 # FinalProject1
+The game first begins by asking the user how many players will participate. It then rolls the dice for the first player and asks if they would like to continue rolling the dice or end their turn. If a player rolls the dice and gets the same number on each dice, their turn ends, and they receive zero points for that round. The next player is then asked the same question. This continues until one player reaches 50 points and wins. The winner is then announced, and the game concludes.
