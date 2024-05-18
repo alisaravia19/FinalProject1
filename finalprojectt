@@ -1,0 +1,57 @@
+import random
+
+def roll_dice():
+    return random.randint(1, 6)
+
+def play_game1(num_players):
+    round_num = 1
+    scores = [0] * int(num_players) # initializing the array of all scores
+    winner = 0
+    
+    while max(scores) < 50:
+        print("Round ", round_num, "\n")
+        
+        for player in range(int(num_players)):
+            dice_rolls = [0] * 3 # initializing the array of dice rolls with 3 empty rolls
+            # creating the 3 dice roll for the player
+            player_turn = True
+            while player_turn == True :
+                for roll in range(3):
+                    dice_rolls[roll] = roll_dice()
+                    print("  Player", player + 1, "Roll", roll + 1, "-", dice_rolls[roll])
+                # check to see if all dice rolls are equal
+                if dice_rolls[0] == dice_rolls[1] and dice_rolls[2] == dice_rolls[1]:
+                    scores[player] += 0
+                    print("  Player rolled three of the same dice, they get 0!")
+                # check if any two of the dice rolls equal each other and end turn if they do
+                ###
+                elif dice_rolls[0] == dice_rolls[1] or dice_rolls[0] == dice_rolls[2] or dice_rolls[1]== dice_rolls[2]:
+                    for roll in dice_rolls:
+                        scores[player] += roll
+                else:
+                    for roll in dice_rolls:
+                        scores[player] += roll
+                user_input = input(" Would you like to keep playing ? Yes or No ?")
+                if user_input == "Yes":
+                    player_turn = True
+                elif user_input == "No":
+                    player_turn = False
+            print("  Score for Player", player + 1, "-", scores[player], "\n")
+            
+            # check to see if player score is over 50 and save player number
+            if scores[player] >= 50:
+                winner = player + 1
+                break
+                
+        round_num += 1
+    
+    print("Player", winner, "is the winner!")
+
+
+def main():
+    num_players = input("How many players? ")
+    play_game1(num_players)
+#    print("test")
+    
+if __name__ == "__main__":
+    main()
